@@ -14,7 +14,7 @@ const routes = (app) => {
     // .post(userSignin)
     // .post(addNewUser)
     
-        app.post('/login', [
+        app.post('/signup', [
             check('email').isEmpty().trim(),
           
             check('password').isEmpty().trim(),
@@ -30,12 +30,12 @@ const routes = (app) => {
                 email: req.body.email,
            
             password: req.body.password,
-            confirmPassword: req.body.confirmpassword
+            confirmpassword: req.body.confirmpassword
             }).then(user => res.json(user));
             });
-    app.route('/access/:id')
-        .get(getUser)
-        .put(updateUser)
+    // app.route('/access/:id')
+    //     .get(getUser)
+    //     .put(updateUser)
        
 }
  

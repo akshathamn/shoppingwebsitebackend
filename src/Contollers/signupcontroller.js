@@ -30,61 +30,41 @@ exports.addNewUser=(req, res)=> {
     }
 
 
- // user login api 
-//  router.post('/login', (req, res) => { 
-//     find user with requested email 
-//     exports.userSignin = function(req, res){
-//         Access.findOne({ email : req.body.email }, function(err, user) { 
-//         if (user === null) { 
-//             return res.status(400).send({ 
-//                 message : "User not found."
-//             }); 
-//         } 
-//         else { 
-//             if (user.password===req.body.password) { 
-//                 return res.status(201).send({ 
-//                     message : "User Logged In", 
-//                 }) 
-//             } 
-//             else { 
-//                 return res.status(400).send({ 
-//                     message : "Wrong Password"
-//                 }); 
-//             } 
-//         } 
-//     }); 
-// }; 
-// module.exports = router; 
+
 
     exports.Signup = function(req, res){
         console.log("hii");
         // console.log(req.body);
         Access.find({email: req.body.email},function(err, data){
           if(data != null && data != ''){
-            res.send('User already exists');
+            res.send("User already exists");
           }
           else
           {
-            // if (req.body.confirmpassword===req.body.password) { 
-                           
+            // bcrypt.compare(req.body.password, data[0].password, function( err, isMatch) {
+              if (req.body.password !== req.body.confirmpassword) {
+                res.send("password does not match");
+                res.json("password does not match");
+                // var err = new Error('Passwords do not match.');
+                // err.status = 400;
+                // return next(err);
+               
+            }          
             var access = new Access(req.body);
             bcrypt.genSalt(10, function(err, salt){
               bcrypt.hash(access.password, salt, function(err, hash) {
                 access.password = hash;
-                // access.confirmpassword = hash;
+               
                 access.save(function(err, data){
                   if(err)
-                    res.send('User created succesfully');
-                  res.json('User created succesfully');
+                    res.send("User created succesfully");
+                    // res.status(200).json({message:"user created successfully"});
+                  res.json("User created succesfully");
                 
                 })
               })
             })
           }
-        //   else{
-        //     req.body.password=" ";
-        //   }
-        // }
         });
       };
       
