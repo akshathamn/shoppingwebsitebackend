@@ -33,16 +33,17 @@ const Access = mongoose.model('Access', userSchema)
 
 
     exports.Signup = function(req, res){
+      const reg_email=/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/;
         console.log("hii");
-        // console.log(req.body);
+        if(reg_email.test(req.body.email)){
+          // console.log(req.body);
         Access.find({email: req.body.email},function(err, data){
           if(data != null && data != ''){
             res.send("User already exists");
           }
-          else
+        else
           {
-            
-              if (req.body.password !== req.body.confirmpassword) {
+            if (req.body.password !== req.body.confirmpassword) {
                 res.send("password does not match");
                 res.json("password does not match");
                 }          
@@ -54,15 +55,17 @@ const Access = mongoose.model('Access', userSchema)
                 access.save(function(err, data){
                   if(err)
                     res.send("User created succesfully");
-                    // res.status(200).json({message:"user created successfully"});
-                  res.json("User created succesfully");
-                
+                    res.json("User created succesfully");
                 })
               })
             })
           }
         });
-      };
+      }
+      else {
+        res.send('Email is invalid');
+      }
+    };
       
       //signIn
       exports.login = function(req,res){
