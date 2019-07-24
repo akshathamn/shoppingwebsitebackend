@@ -1,5 +1,5 @@
-import { addNewUser, getUsers, Signup,login}  from '../Contollers/signupcontroller'
-import{createProduct} from '../Contollers/Productcontroller'
+import { addNewUser, getUsers, Signup,login}  from '../Controllers/signupcontroller'
+import{createProduct} from '../Controllers/Addproductcontroller'
 // const { check, validationResult  } = require('express-validator/check')
 
 const routes = (app) => {

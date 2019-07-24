@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import productSchema from '../models/Productmodel'
+import productSchema from '../models/Addproductmodel'
 const Product = mongoose.model('Product', productSchema)
 exports.createProduct = function(req, res) {
 var new_data = new Product(req.body);
