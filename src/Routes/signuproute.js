@@ -1,5 +1,7 @@
 import { addNewUser, getUsers, Signup,login}  from '../Controllers/signupcontroller'
 import{createProduct} from '../Controllers/Addproductcontroller'
+import{createShop,getshop} from '../Controllers/Shopcontroller'
+import{createCart} from '../Controllers/Cartcontroller'
 // const { check, validationResult  } = require('express-validator/check')
 
 const routes = (app) => {
@@ -14,7 +16,13 @@ const routes = (app) => {
 
     app.route('/product')
 .post(createProduct)
+
+app.route('/shop')
+.post(createShop)
+.get(getshop)
  
+app.route('/cart')
+.post(createCart)
     // .post(addNewUser)
     
         // app.post('/signup', [
