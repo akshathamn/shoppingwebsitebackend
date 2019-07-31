@@ -1,5 +1,5 @@
 import { addNewUser, getUsers, Signup,login}  from '../Controllers/signupcontroller'
-import{createProduct} from '../Controllers/Addproductcontroller'
+// import{createProduct} from '../Controllers/Addproductcontroller'
 import{createShop,getshop} from '../Controllers/Shopcontroller'
 import{createCart} from '../Controllers/Cartcontroller'
 // const { check, validationResult  } = require('express-validator/check')
@@ -14,8 +14,8 @@ const routes = (app) => {
     .post(Signup)
 
 
-    app.route('/product')
-.post(createProduct)
+//     app.route('/product')
+// .post(createProduct)
 
 app.route('/shop')
 .post(createShop)
