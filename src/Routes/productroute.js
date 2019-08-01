@@ -10,6 +10,7 @@ productRoutes.route('/addproduct').post(function (req, res) {
   product.save()
     .then(product => {
       res.status(200).json({'product': 'product is added successfully'});
+      res.json(product);
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
@@ -17,8 +18,10 @@ productRoutes.route('/addproduct').post(function (req, res) {
 });
 
 // Defined get data(index or listing) route
-productRoutes.route('/').get(function (req, res) {
-    Product.find(function(err, products){
+productRoutes.route('/getproduct').get(function (req, res) {
+  // let product = new productSchema();
+
+  productSchema.find(function(err, products){
     if(err){
       console.log(err);
     }
@@ -28,17 +31,20 @@ productRoutes.route('/').get(function (req, res) {
   });
 });
 
+
+
+
 // Defined edit route
 productRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
-  Product.findById(id, function (err, product){
+  product.findById(id, function (err, product){
       res.json(product);
   });
 });
 
 //  Defined update route
 productRoutes.route('/update/:id').post(function (req, res) {
-    Product.findById(req.params.id, function(err, product) {
+    product.findById(req.params.id, function(err, product) {
     if (!product)
       res.status(404).send("data is not found");
     else {
