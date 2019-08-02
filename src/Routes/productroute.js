@@ -32,6 +32,13 @@ productRoutes.route('/getproduct').get(function (req, res) {
 });
 
 
+// Defined delete | remove | destroy route
+productRoutes.route('/delete/:id').get(function (req, res) {
+  productSchema.findByIdAndRemove({_id: req.params.id}, function(err, product){
+      if(err) res.json(err);
+      else res.json('Successfully removed');
+  });
+});
 
 
 // Defined edit route
@@ -43,32 +50,25 @@ productRoutes.route('/edit/:id').get(function (req, res) {
 });
 
 //  Defined update route
-productRoutes.route('/update/:id').post(function (req, res) {
-    product.findById(req.params.id, function(err, product) {
-    if (!product)
-      res.status(404).send("data is not found");
-    else {
-        product.title = req.body.title;
-        product.price = req.body.price;
-        product.image = req.body.image;
-        product.description=req.body.description;
+// productRoutes.route('/update/:id').post(function (req, res) {
+//     product.findById(req.params.id, function(err, product) {
+//     if (!product)
+//       res.status(404).send("data is not found");
+//     else {
+//         product.title = req.body.title;
+//         product.price = req.body.price;
+//         product.image = req.body.image;
+//         product.description=req.body.description;
 
-        product.save().then(product => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
-      });
-    }
-  });
-});
+//         product.save().then(product => {
+//           res.json('Update complete');
+//       })
+//       .catch(err => {
+//             res.status(400).send("unable to update the database");
+//       });
+//     }
+//   });
+// });
 
-// Defined delete | remove | destroy route
-productRoutes.route('/delete/:id').get(function (req, res) {
-    Product.findByIdAndRemove({_id: req.params.id}, function(err, product){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });
-});
 
 module.exports = productRoutes;
