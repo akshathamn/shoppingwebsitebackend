@@ -4,9 +4,11 @@ const productRoutes = express.Router();
 // Require Business model in our routes module
 let productSchema = require('../models/Addproductmodel');
 
-// Defined store route
+// // Defined store route
 productRoutes.route('/addproduct').post(function (req, res) {
+  
   let product = new productSchema(req.body);
+  console.log(req.body)
   product.save()
     .then(product => {
       res.status(200).json({'product': 'product is added successfully'});
