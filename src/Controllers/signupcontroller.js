@@ -4,6 +4,8 @@ const Cryptr = require('cryptr');
 const cryptr = new Cryptr('myTotalySecretKey');
 import bcrypt from 'bcryptjs';
 var jwt=require('jsonwebtoken');
+var isAuth=require('../middleware/isAuth')
+
 
 const Access = mongoose.model('Access', userSchema)
  
@@ -113,6 +115,16 @@ const Access = mongoose.model('Access', userSchema)
       
       }
 
+
+
+      exports.getAllLogin = (isAuth,function(req, res) {
+        console.log("hello")
+        Access.find({userId:req.decodedToken}, function(err, data) {
+        if (err)
+        res.send(err);
+        res.json(data); 
+        });
+        });
 
 
       // //signIn

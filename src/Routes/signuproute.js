@@ -1,17 +1,19 @@
-import { addNewUser, getUsers, Signup,login}  from '../Controllers/signupcontroller'
+import { addNewUser, getUsers, Signup,login,getAllLogin}  from '../Controllers/signupcontroller'
 // import{createProduct} from '../Controllers/Addproductcontroller'
 import{createShop,getshop} from '../Controllers/Shopcontroller'
 import{createCart} from '../Controllers/Cartcontroller'
 // const { check, validationResult  } = require('express-validator/check')
+var isAuth=require('../middleware/isAuth')
 
 const routes = (app) => {
     app.route('/login')
-        // .get(getUsers)
+        .get(isAuth,getAllLogin )
        
     .post(login)
        
     app.route('/signup')
     .post(Signup)
+    
 
 
 //     app.route('/product')
