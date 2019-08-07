@@ -6,7 +6,6 @@ let productSchema = require('../models/Addproductmodel');
 
 // // Defined store route
 productRoutes.route('/addproduct').post(function (req, res) {
-  
   let product = new productSchema(req.body);
   console.log(req.body)
   product.save()
@@ -22,8 +21,7 @@ productRoutes.route('/addproduct').post(function (req, res) {
 // Defined get data(index or listing) route
 productRoutes.route('/getproduct').get(function (req, res) {
   // let product = new productSchema();
-
-  productSchema.find(function(err, products){
+   productSchema.find(function(err, products){
     if(err){
       console.log(err);
     }
