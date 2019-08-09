@@ -3,7 +3,9 @@ import routes from './src/Routes/signuproute'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import cors from 'cors';
-import productRoute from './src/Routes/productroute'
+import productRoute from './src/Routes/productroute';
+
+
 
 // const productRoute = require('../Routes/productroute');
 
@@ -20,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
  
 app.use('/product',productRoute);
+
 
 
 routes(app)

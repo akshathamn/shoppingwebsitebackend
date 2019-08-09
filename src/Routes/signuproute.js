@@ -2,6 +2,7 @@ import { addNewUser, getUsers, Signup,login,getAllLogin}  from '../Controllers/s
 // import{createProduct} from '../Controllers/Addproductcontroller'
 import{createShop,getshop} from '../Controllers/Shopcontroller'
 import{createCart,getcart,deletecart} from '../Controllers/Cartcontroller'
+import{createadminProduct,getadminproduct,editadminproduct,deleteadminproduct,updateadminproduct} from '../Controllers/Adminproductcontroller'
 // const { check, validationResult  } = require('express-validator/check')
 var isAuth=require('../middleware/isAuth')
 
@@ -28,6 +29,14 @@ app.route('/cart')
 .get(getcart)
 // .delete(deletecart)
 
+app.route('/adminproduct')
+.post(createadminProduct)
+.get(getadminproduct)
+.put(editadminproduct)
+
+app.route('/adminproduct/:id')
+.delete(deleteadminproduct)
+.put(updateadminproduct)
 
     // .post(addNewUser)
     
