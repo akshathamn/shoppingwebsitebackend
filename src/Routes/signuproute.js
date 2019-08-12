@@ -33,6 +33,7 @@ app.route('/adminproduct')
 .post(createadminProduct)
 .get(getadminproduct)
 .put(editadminproduct)
+// .delete(deleteadminproduct)
 
 app.route('/adminproduct/:id')
 .delete(deleteadminproduct)
