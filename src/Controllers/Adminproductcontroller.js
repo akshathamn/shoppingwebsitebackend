@@ -11,7 +11,6 @@ res.json(data);
 };
 
 exports.getadminproduct=function (req, res) {
-    // var adminproduc = new adminProduct(req.body);
     adminProduct.find(function(err, products){
       if(err){
         console.log(err);

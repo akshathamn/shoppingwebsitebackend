@@ -17,8 +17,6 @@ let AdminproductSchema = new Schema({
   description: {
     type: String,
     required: true
-  
   }
   });
   export default AdminproductSchema;
-// module.exports = mongoose.model('AdminproductSchema', AdminproductSchema);

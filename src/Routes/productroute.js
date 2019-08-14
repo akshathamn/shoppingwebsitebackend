@@ -1,7 +1,5 @@
 const express = require('express');
 const productRoutes = express.Router();
-// import productSchema from '../models/Addproductmodel';
-// Require Business model in our routes module
 let productSchema = require('../models/Addproductmodel');
 
 // // Defined store route
@@ -42,12 +40,12 @@ productRoutes.route('/delete/:id').get(function (req, res) {
 
 
 // Defined edit route
-productRoutes.route('/edit/:id').get(function (req, res) {
-  let id = req.params.id;
-  product.findById(id, function (err, product){
-      res.json(product);
-  });
-});
+// productRoutes.route('/edit/:id').get(function (req, res) {
+//   let id = req.params.id;
+//   product.findById(id, function (err, product){
+//       res.json(product);
+//   });
+// });
 
 //  Defined update route
 // productRoutes.route('/update/:id').post(function (req, res) {
