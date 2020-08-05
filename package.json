@@ -19,7 +19,7 @@
     "cryptr": "^4.0.2",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.5",
+    "express-fileupload": "^1.1.9",
     "express-form-data": "^2.0.10",
     "express-validator": "^6.1.1",
     "gravatar": "^1.8.0",
