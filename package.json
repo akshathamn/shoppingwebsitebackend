@@ -37,7 +37,7 @@
     "password-validator": "^4.1.1",
     "strike": "^0.1.73",
     "stripe": "^7.8.0",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
